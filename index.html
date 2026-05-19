@@ -744,13 +744,18 @@
     }
 
     .gallery-item:nth-child(1) {
-      grid-column: span 6;
+      grid-column: span 5;
       grid-row: span 2;
     }
 
     .gallery-item:nth-child(2) {
-      grid-column: span 6;
-      grid-row: span 2;
+      grid-column: span 7;
+      grid-row: span 1;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-column: span 7;
+      grid-row: span 1;
     }
 
     @media (max-width: 768px) {
@@ -760,10 +765,14 @@
       }
 
       .gallery-item:nth-child(1) {
-        grid-column: span 1;
+        grid-column: span 2;
       }
 
       .gallery-item:nth-child(2) {
+        grid-column: span 1;
+      }
+
+      .gallery-item:nth-child(3) {
         grid-column: span 1;
       }
     }
@@ -1516,10 +1525,13 @@
         <div class="gallery-label reveal">Thought we'd share a little behind the scenes fun</div>
         <div class="gallery-grid reveal">
           <div class="gallery-item" onclick="openLightbox(this)">
-            <img src="team-azteca.jpg" alt="Level team" loading="lazy">
+            <img src="team-at-psecu.jpg" alt="Level team at PSECU" loading="lazy">
           </div>
           <div class="gallery-item" onclick="openLightbox(this)">
             <img src="team-working.jpg" alt="Level team at work" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="team-azteca.jpg" alt="Level team" loading="lazy" style="object-position: center bottom;">
           </div>
 
         </div>
