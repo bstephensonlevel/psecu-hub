@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level Agency — PSECU</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- QR Code Library -->
+
+  <style>
+    :root {
+      --font-display: "Lexend Deca", sans-serif;
+      --font-body: "Lexend Deca", sans-serif;
+      --color-black: #043436;
+      --color-white: #FFFFFF;
+      --color-gray: #cce8e5;
+      --color-blue: #b4fff0;
+      --color-pink: #7ce5d3;
+      --color-green: #098486;
+      --color-orange: #ffbd6f;
+      --color-muted: #525355;
+      --color-light-bg: #f0faf9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-black);
+      background: var(--color-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 78% 12%, rgba(9, 132, 134, 0.55) 0%, transparent 52%),
+        radial-gradient(ellipse at 12% 88%, rgba(180, 255, 240, 0.1) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, rgba(6, 82, 84, 0.3) 0%, transparent 70%),
+        linear-gradient(135deg, #11302e 0%, #043436 45%, #054244 75%, #065c5e 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(4, 52, 54, 0.98) 0%,
+          rgba(4, 52, 54, 0.5) 35%,
+          rgba(4, 52, 54, 0.1) 70%,
+          rgba(4, 52, 54, 0.0) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .hero-logo {
+      width: 120px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-logo svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-logo svg path {
+      fill: #FFFFFF;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--color-white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-meta {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      max-width: 500px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .hero-meta strong {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+    }
+
+    .hero-scroll svg {
+      width: 24px;
+      height: 24px;
+      stroke: rgba(255, 255, 255, 0.4);
+      animation: bounce 2s infinite;
+    }
+
+    /* ===== THANK YOU SECTION ===== */
+    .thank-you {
+      padding: 6rem 2rem;
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+
+    .thank-you-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .thank-you-inner h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .thank-you-inner p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .accent-bar {
+      width: 48px;
+      height: 3px;
+      background: var(--color-pink);
+      margin: 0 auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* ===== VIDEO SECTION ===== */
+    .culture-video {
+      padding: 5rem 2rem;
+      background: var(--color-black);
+      color: var(--color-white);
+      text-align: center;
+    }
+
+    .culture-video-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .culture-video-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-bottom: 1rem;
+    }
+
+    .culture-video-inner h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .culture-video-inner p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-wrapper::before {
+      content: '';
+      display: block;
+      padding-top: 56.25%;
+      /* 16:9 */
+    }
+
+    .video-thumbnail {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-thumbnail-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .video-wrapper:hover .video-thumbnail-overlay {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, background 0.25s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-play-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--color-black);
+    }
+
+    .video-wrapper:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: var(--color-blue);
+    }
+
+    .video-wrapper:hover .video-play-btn svg {
+      fill: var(--color-black);
+    }
+
+    .video-iframe-container {
+      display: none;
+      position: absolute;
+      inset: 0;
+    }
+
+    .video-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-wrapper.playing .video-thumbnail,
+    .video-wrapper.playing .video-thumbnail-overlay,
+    .video-wrapper.playing .video-play-btn {
+      display: none;
+    }
+
+    .video-wrapper.playing .video-iframe-container {
+      display: block;
+    }
+
+    /* ===== SMALL VIDEO GALLERY ===== */
+    .culture-gallery {
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 4rem;
+    }
+
+    .culture-gallery-header {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .slider-track::-webkit-scrollbar {
+      display: none;
+      /* Safari and Chrome */
+    }
+
+    .slider-item {
+      flex: 0 0 calc(33.333% - 14px);
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      .slider-item {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+      }
+    }
+
+    .slider-item .video-wrapper {
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .slider-item .video-play-btn {
+      width: 48px;
+      height: 48px;
+    }
+
+    .slider-item .video-play-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .slider-arrow:hover {
+      background: var(--color-blue);
+      border-color: var(--color-blue);
+      color: var(--color-black);
+    }
+
+    .slider-arrow svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .slider-prev {
+      left: -10px;
+    }
+
+    .slider-next {
+      right: -10px;
+    }
+
+    /* ===== PLACEMAT SECTION ===== */
+    .placemat {
+      padding: 5rem 2rem 4rem;
+      background: var(--color-white);
+      border-top: 1px solid var(--color-gray);
+    }
+
+    .placemat-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .placemat-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+    }
+
+    .placemat-inner h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .placemat-inner p {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+
+    .placemat-inner p.placemat-secondary {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: #9CA3AF;
+      margin-bottom: 2rem;
+    }
+
+    .placemat-preview {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 2.5rem;
+      background: #fff;
+      border: 1px solid var(--color-gray);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placemat-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .placemat-preview::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
+      border-radius: 12px 12px 0 0;
+    }
+
+
+
+    /* ===== TOPIC HIGHLIGHTS ===== */
+    .topics {
+      padding: 1rem 2rem;
+      background: var(--color-light-bg);
+    }
+
+    .topics-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .topics-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .topic-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .topic-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.2rem;
+    }
+
+    .topic-icon.blue {
+      background: rgba(180, 255, 240, 0.2);
+      color: #098486;
+    }
+
+    .topic-icon.pink {
+      background: rgba(124, 229, 211, 0.2);
+      color: #098486;
+    }
+
+    .topic-icon.green {
+      background: rgba(9, 132, 134, 0.15);
+      color: #065c5e;
+    }
+
+    .topic-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .topic-card p {
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== EVENTS ===== */
+    .events {
+      padding: 6.25rem 2.5rem;
+      background-color: var(--color-bg-alt);
+    }
+
+    .events-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .events-label {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-light);
+      margin-bottom: 3.125rem;
+      text-align: center;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background: var(--color-white);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid var(--color-gray);
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      border-color: var(--color-text-light);
+    }
+
+    .event-card:hover .event-arrow {
+      transform: translate(2px, 2px);
+      color: var(--color-accent);
+    }
+
+    .event-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: var(--color-muted);
+      transition: all 0.3s ease;
+      width: 24px;
+      height: 24px;
+    }
+
+    .event-date {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .event-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      color: var(--color-text);
+    }
+
+    .event-desc {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 768px) {
+      .events {
+        padding: 4rem 1.5rem;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .event-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      padding: 5rem 2rem;
+      background: var(--color-white);
+    }
+
+    .gallery-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 220px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 6;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: span 6;
+      grid-row: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 200px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+      }
+
+      .gallery-item:nth-child(2) {
+        grid-column: span 1;
+      }
+    }
+
+    /* ===== ABOUT LEVEL ===== */
+    .about {
+      padding: 5rem 2rem;
+      background: var(--color-black);
+      color: var(--color-white);
+    }
+
+    .about-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .about-left h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-left p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .about-right {
+      padding-top: 0.5rem;
+    }
+
+    .about-stat {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.25rem 0;
+    }
+
+    .about-stat:last-child {
+      border-bottom: none;
+    }
+
+    .about-stat-number {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--color-blue);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-stat-label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ===== CAPABILITIES ===== */
+    .capabilities {
+      padding: 4rem 2rem;
+      background: #021f20;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .capabilities-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .capabilities-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 1.5rem;
+    }
+
+    .capabilities-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .cap-tag {
+      font-size: 0.82rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      color: rgba(255, 255, 255, 0.55);
+      transition: all 0.2s ease;
+    }
+
+    .cap-tag:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ===== SWAG + CTA ===== */
+    .cta-section {
+      padding: 6rem 2rem;
+      background: var(--color-light-bg);
+    }
+
+    .cta-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        margin-bottom: 3.125rem;
+      }
+
+      .cta-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .cta-block {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray);
+      border-radius: 16px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .cta-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: block;
+    }
+
+    .cta-content {
+      text-align: left;
+    }
+
+    .cta-content h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+
+    .cta-content p {
+      font-size: 1.1rem;
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .cta-block {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+      }
+
+      .cta-content {
+        text-align: center;
+      }
+
+      .cta-image {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    .cta-block h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .cta-block p {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .qr-wrapper {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.25rem;
+      background: var(--color-white);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-gray);
+    }
+
+    .qr-wrapper canvas,
+    .qr-wrapper img {
+      border-radius: 8px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      background: var(--color-black);
+      color: var(--color-white);
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: #032a2c;
+    }
+
+    .cta-btn.accent {
+      background: var(--color-blue);
+      color: var(--color-black);
+    }
+
+    .cta-btn.accent:hover {
+      background: #7ce5d3;
+    }
+
+    .swag-note {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-top: 1rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 3rem 2rem;
+      background: var(--color-black);
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 80px;
+      margin: 0 auto 1rem;
+    }
+
+    .footer-logo svg path {
+      fill: #FFFFFF;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(6px);
+      }
+
+      60% {
+        transform: translateY(3px);
+      }
+    }
+
+    /* Scroll reveal - visible by default, animated when JS observer fires */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-overlay iframe {
+      width: 90%;
+      height: 80vh;
+      max-width: 1000px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .lightbox-overlay.video img {
+      display: none;
+    }
+
+    .lightbox-overlay.video iframe {
+      display: block;
+    }
+
+    .hero-logo {
+      width: 100px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ===== LOGIN OVERLAY ===== */
+    #login-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--color-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .login-logo {
+      width: 60px;
+      margin: 0 auto 2rem;
+    }
+
+    .login-box h1 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .login-box p {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .login-input {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .login-input:focus {
+      outline: none;
+      border-color: var(--color-blue);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .login-btn {
+      background: var(--color-blue);
+      color: var(--color-black);
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(180, 255, 240, 0.35);
+    }
+
+    .login-error {
+      color: #ff4b4b;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-10px);
+      }
+
+      75% {
+        transform: translateX(10px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="login-overlay">
+    <div class="login-box">
+      <div class="login-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#86D5F4" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      <h1>Private Access</h1>
+      <p>Enter password to view the PSECU Growth Engine Pitch Follow-up.</p>
+      <form class="login-form" id="login-form">
+        <input type="password" id="password" class="login-input" placeholder="Password" required
+          autocomplete="current-password">
+        <button type="submit" class="login-btn">Secure Login</button>
+        <div id="login-error" class="login-error">Invalid password.</div>
+      </form>
+    </div>
+  </div>
+
+  <div id="site-wrapper" style="display: none;">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-logo">
+          <!--<svg viewBox="0 0 1088.59 200.05" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFFFFF"
+            d="M910.08,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM699.41,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM479.93,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h124.56c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-124.56ZM216.92,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM699.41,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM469.39,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h145.65c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-145.65ZM216.92,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM459.3,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h165.81c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-165.81ZM216.92,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM8.54,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h131.13c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-131.13ZM556.65,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM449.31,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM216.92,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h131.13c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-131.13ZM8.54,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM216.92,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM8.54,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM566.86,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM439.09,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM910.08,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM576.8,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM429.15,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM8.54,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM699.41,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM216.92,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM910.08,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM587.15,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM418.8,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM216.92,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,17.08C3.83,17.08,0,13.25,0,8.54S3.83,0,8.54,0h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54Z" />
+        </svg>-->
+          <img class="hero-logo" src="https://www.level.agency/wp-content/uploads/2025/12/logo-primary.png" />
+        </div>
+        <div class="hero-eyebrow">From Level, for PSECU &bull; May 18, 2026</div>
+        <h1 class="hero-title">The growth engine PSECU deserves.</h1>
+        <!--<div class="hero-meta">
+        <strong>Electric Lemon at Equinox Hotel</strong><br>
+        33 Hudson Yards, 24th Floor &bull; New York, NY
+      </div>-->
+      </div>
+      <div class="hero-scroll">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+      </div>
+    </section>
+
+
+
+    <!-- ===== THANK YOU ===== -->
+    <section class="thank-you">
+      <div class="thank-you-inner reveal">
+        <div class="accent-bar"></div>
+        <h2>Thank you for the opportunity.</h2>
+        <p>
+          We’ve gathered the materials from our presentation here, along with a few additional resources to give you a
+          clearer picture of how Level thinks, works, and partners with clients to drive meaningful growth.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== SWAG + CTA ===== -->
+    <section class="cta-section">
+      <div class="cta-inner">
+        <!--<div class="cta-block reveal">
+        <h3>Grab your swag.</h3>
+        <p>Scan the QR code below to claim your exclusive Level event swag — our way of saying thanks.</p>
+        <div class="qr-wrapper" id="qr-swag" style="display:flex;justify-content:center;">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAACaElEQVR4nO2bTYrcMBCFv2oZeilDHyBHUd8gZ8qRcgP3UXKAAWsZsHlZqNw/CQw9A04LprQYxvK3eFBIeq+sNvHkuByeJSHQQAM9QDUfZ8DO1cxsXM3MBrZXQydaAyVJktqWqB8jQD1KmoEi+X99aA0UfPVUM4oWNOUFLiNtzs67Cwj0qTE8PKXFys+TjLwOkOf/ICDQT6OrAaCpDkAd3kH3ERDou6MVZLPxaTHyAkXrIOoJyALqfgIC/SC6Nt/nM3XAzvUoOwNczMxs3FdAoE+OwVcPAHU1yEt70OXbwn12frnWQJHm5DVxO+iW/ebqm42fXq41UDxMAZKW7TFLmtp0kjSnqFYPaKsRpa2jJMq8vbnOtRHVej2KlwJ8E5zyth22uduLl2sN1CNVERgZoB5bOhZ5bl7e2np7udZAW1cXAE2srcukqR6FW/ujPCz3oPWLo+4Jy0zzhM1gXP3G7VSLnbAD9M6oNxNYJFHmq7cgKc6tXlD37dOdHUyet7xQsbb6QQeoI1a0mkAY+c0gC/Mm71FGPS0daA30ACS17qB/5Nr+lDltETkvvWj92mhzGbdWk2+MLXlt6TjOrU7Qxz6hGwzI1x4UaSvZy7UGevDKSFuswvOWnZvfWO2G7iMg0KfHravrPfjWGHzwieEJO0EHILUvWkY9ycp8wsrPk2cwalq4jPNuAgL9cJ/QvGTbvQwqWJlHAxJWfg3h4HtA/7nzdBkxyL+NuwqGg+8DvXpCP6P++ljiIxx8H+jDnafthoaR3wYr82mBOqLL9/0EBPpZT9iilnRLxy0ihyfsBLX4RVCgge6C/gGGQrBVk/tooQAAAABJRU5ErkJggg=="
+            alt="QR Code - Scan for swag" width="180" height="180" style="border-radius:8px;" />
+        </div>
+        <p class="swag-note">Scan with your phone camera</p>
+      </div>-->
+        <div class="cta-block reveal">
+          <div class="cta-image">
+            <img src="psecu-deck-cover.jpg" alt="PSECU Presentation Cover">
+          </div>
+          <div class="cta-content">
+            <h3>Download our presentation.</h3>
+            <p>Want to revisit the strategy and ideas we shared? Download the full PSECU presentation for a complete
+              look at our proposed approach.</p>
+            <a href="https://info.level.agency/hubfs/Blog%20assets/Brightspeed%20Final%20Presentation%20Deck.pdf"
+              class="cta-btn accent" target="_blank" rel="noopener">Download the deck</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CULTURE VIDEO ===== -->
+    <section class="culture-video">
+      <div class="culture-video-inner reveal">
+        <div class="culture-video-eyebrow">GOOD ENOUGH ISN'T</div>
+        <h2>Get to know our culture.</h2>
+        <p>Watch as our team shares their excitement about how we'll put
+          our "Good Enough Isn't" ethos to work for PSECU.</p>
+        <div class="video-wrapper" id="cultureVideo">
+          <img class="video-thumbnail" src="https://img.youtube.com/vi/M0TLPfwRSJo/maxresdefault.jpg"
+            alt="Culture video thumbnail" />
+          <div class="video-thumbnail-overlay"></div>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24">
+              <polygon points="9,5 19,12 9,19" />
+            </svg>
+          </div>
+          <div class="video-iframe-container">
+            <iframe id="cultureVideoIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PLACEMAT ===== -->
+    <section class="placemat">
+      <div class="placemat-inner reveal">
+        <div class="placemat-eyebrow">Quick Reference</div>
+        <h2>Meet the team behind the strategy.</h2>
+        <p>Download a one-page guide that introduces the Level team supporting PSECU and outlines the core
+          elements of our proposed growth strategy.</p>
+        <p>Think of it as a quick reference to who's involved and how we'll work together.</p>
+        <div class="placemat-preview">
+          <img src="brightspeed-mat-image.jpg" alt="PSECU team placemat" loading="lazy">
+        </div>
+        <a href="https://info.level.agency/hubfs/Blog%20assets/LEVEL_Brightspeed_Placemat.pdf" target="_blank"
+          class="cta-btn accent">Download the team overview</a>
+      </div>
+    </section>
+
+    <!-- ===== TOPICS ===== -->
+    <section class="topics">
+      <div class="topics-inner">
+        <div class="topics-label reveal">What we explored</div>
+        <div class="topics-grid">
+          <div class="topic-card reveal">
+            <div class="topic-icon blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3>Full-funnel targeting with precision</h3>
+            <p>Using Pathfinder's audience intelligence and real-time Signal optimization, PSECU and Level can precisely target prospects across the full funnel — building awareness, capturing in-market demand, and driving card activation more efficiently than spend alone ever could.</p>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-icon pink">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 4h14l-4 6v6l-4 2v-8L3 4z" />
+                <path d="M16 14l3 3" />
+                <circle cx="19" cy="17" r="3" />
+                <path d="M17.5 17.5l1 1 2-2" stroke-width="1.5" />
+              </svg>
+            </div>
+            <h3>A path to measurement maturity</h3>
+            <p>A phased roadmap that evolves from pixel baseline to direct attribution to incrementality-validated full-funnel modeling — so PSECU can connect every media dollar to an activated product, by member, by product line.</p>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-icon green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3>A true extension of your team</h3>
+            <p>Level works as an embedded partner — with named leads across media, data, and creative — bringing strategy, execution, and measurement together in a transparent operating model built around PSECU's certified win conditions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UPCOMING EVENTS ===== -->
+    <section class="events">
+      <div class="events-inner">
+        <div class="events-label reveal">Level Events of Note</div>
+        <div class="events-grid">
+          <a href="https://info.level.agency/level-x-google-virtual-insider-session" target="_blank"
+            class="event-card reveal">
+            <svg class="event-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="7" x2="17" y2="17"></line>
+              <polyline points="17 7 17 17 7 17"></polyline>
+            </svg>
+            <div class="event-date">May 21, 1 PM Eastern</div>
+            <h3 class="event-title">Cut through the measurement noise, featuring Google’s Alana Parsons</h3>
+            <p class="event-desc">Cut through the noise, find the signals that actually drive growth, and make faster
+              decisions before the ground shifts again</p>
+          </a>
+
+          <a href="https://info.level.agency/ai-visibility-insider-session" target="_blank" class="event-card reveal">
+            <svg class="event-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="7" x2="17" y2="17"></line>
+              <polyline points="17 7 17 17 7 17"></polyline>
+            </svg>
+            <div class="event-date">Watch on Demand</div>
+            <h3 class="event-title">AI Visibility Virtual Insider Session with Profound AI</h3>
+            <p class="event-desc">Actionable tactics you can use immediately to boost your brand’s visibility across
+              AI-driven search and answer engines</p>
+          </a>
+
+          <a href="https://info.level.agency/reddit-marketing-leaders-ai-visibility-session" target="_blank"
+            class="event-card reveal">
+            <svg class="event-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="7" x2="17" y2="17"></line>
+              <polyline points="17 7 17 17 7 17"></polyline>
+            </svg>
+            <div class="event-date">Watch on Demand</div>
+            <h3 class="event-title">Reddit for marketing leaders</h3>
+            <p class="event-desc">Spend 30 minutes with leaders from Reddit talking about how brands can best engage
+              with the platform</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery">
+      <div class="gallery-inner">
+        <div class="gallery-label reveal">Thought we'd share a little behind the scenes fun</div>
+        <div class="gallery-grid reveal">
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="team-azteca.jpg" alt="Level team" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox(this)">
+            <img src="team-working.jpg" alt="Level team at work" loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT LEVEL ===== -->
+    <section class="about">
+      <div class="about-inner">
+        <div class="about-left reveal">
+          <h2>Good enough isn't.</h2>
+          <p>
+            Level is an embedded growth partner for brands in complex, high-consideration markets.
+            We combine AI-enhanced strategy, creative, and media into one performance system, built to
+            sustain momentum, not just spike it.
+          </p>
+          <p>
+            Headquartered in Pittsburgh with 250+ people across North America, we partner with
+            teams that expect more from their marketing and from the people behind it.
+          </p>
+        </div>
+        <div class="about-right reveal">
+          <img src="web-team-square.png" alt="Level team"
+            style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CAPABILITIES ===== -->
+    <section class="capabilities">
+      <div class="capabilities-inner reveal">
+        <div class="capabilities-label">What we do</div>
+        <div class="capabilities-list">
+          <span class="cap-tag">Performance Media</span>
+          <span class="cap-tag">AI SEO</span>
+          <span class="cap-tag">Creative & Content</span>
+          <span class="cap-tag">Data Science & Analytics</span>
+          <span class="cap-tag">Marketing Automation</span>
+          <span class="cap-tag">Strategy & Consulting</span>
+          <span class="cap-tag">CRM & Loyalty</span>
+          <span class="cap-tag">Website Development</span>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <svg viewBox="0 0 1088.59 200.05" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFFFFF"
+            d="M910.08,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM699.41,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM479.93,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h124.56c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-124.56ZM216.92,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,200.05c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM699.41,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM469.39,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h145.65c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-145.65ZM216.92,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,169.56c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM459.3,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h165.81c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-165.81ZM216.92,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM8.54,139.06c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h131.13c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-131.13ZM556.65,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM449.31,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM216.92,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h131.13c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-131.13ZM8.54,108.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM910.08,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM216.92,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM8.54,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM566.86,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM439.09,78.07c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM910.08,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM576.8,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM429.15,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM8.54,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54ZM699.41,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM216.92,47.57c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM910.08,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-89.95ZM699.41,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM587.15,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM418.8,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h78.47c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-78.47ZM216.92,17.08c-4.71,0-8.54-3.83-8.54-8.54s3.83-8.54,8.54-8.54h169.97c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54h-169.97ZM8.54,17.08C3.83,17.08,0,13.25,0,8.54S3.83,0,8.54,0h89.95c4.71,0,8.54,3.83,8.54,8.54s-3.83,8.54-8.54,8.54H8.54Z" />
+        </svg>
+      </div>
+      <div class="footer-tagline">Good enough isn't.</div>
+      <div class="footer-links">
+        <a href="https://level.agency" target="_blank" rel="noopener">level.agency</a>
+        <a href="https://www.linkedin.com/company/levelagency/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Level Agency. All rights reserved.</div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <iframe id="lightbox-video" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    // Authentication Logic
+    (function () {
+      const overlay = document.getElementById('login-overlay');
+      const wrapper = document.getElementById('site-wrapper');
+      const form = document.getElementById('login-form');
+      const error = document.getElementById('login-error');
+
+      const PASSWORD = 'levelpsecu';
+
+      function showSite() {
+        overlay.style.display = 'none';
+        wrapper.style.display = 'block';
+        // Re-trigger scroll reveals
+        window.dispatchEvent(new Event('resize'));
+        document.body.style.overflow = 'auto';
+      }
+
+      // Check if already authenticated
+      if (sessionStorage.getItem('level_authenticated') === 'true') {
+        showSite();
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const p = document.getElementById('password').value;
+
+        if (p === PASSWORD) {
+          sessionStorage.setItem('level_authenticated', 'true');
+          showSite();
+        } else {
+          error.style.display = 'block';
+          form.style.animation = 'none';
+          form.offsetHeight; // trigger reflow
+          form.style.animation = 'shake 0.4s ease';
+        }
+      });
+    })();
+
+    // QR Code generation
+    document.addEventListener('DOMContentLoaded', function () {
+      // QR Code generation
+      try {
+        const qrElement = document.getElementById("qr-swag");
+        if (qrElement) {
+          new QRCode(qrElement, {
+            text: "https://levelagency.com/swag",
+            width: 160,
+            height: 160,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+          });
+        }
+      } catch (e) {
+        console.warn("QR Code generation failed:", e);
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('hidden');
+        observer.observe(el);
+      });
+
+      // Main Culture Video player
+      const cultureVideo = document.getElementById('cultureVideo');
+      if (cultureVideo) {
+        cultureVideo.addEventListener('click', function () {
+          const iframe = this.querySelector('iframe');
+          // Add autoplay to URL and show iframe
+          iframe.src = 'https://www.youtube.com/embed/M0TLPfwRSJo?autoplay=1&mute=0&rel=0&showinfo=0';
+          this.classList.add('playing');
+        });
+      }
+
+      // Small Slider Videos
+      const sliderVideos = document.querySelectorAll('.cultureSliderVideo');
+      sliderVideos.forEach(video => {
+        video.addEventListener('click', function () {
+          openVideoLightbox(this.dataset.videoUrl);
+        });
+      });
+
+      // Slider Navigation
+      const track = document.getElementById('videoSliderTrack');
+      const btnPrev = document.querySelector('.slider-prev');
+      const btnNext = document.querySelector('.slider-next');
+
+      if (track && btnPrev && btnNext) {
+        btnPrev.addEventListener('click', () => {
+          track.scrollBy({ left: -(track.clientWidth + 20), behavior: 'smooth' });
+        });
+
+        btnNext.addEventListener('click', () => {
+          track.scrollBy({ left: track.clientWidth + 20, behavior: 'smooth' });
+        });
+      }
+    });
+
+    // Lightbox
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openVideoLightbox(videoUrl) {
+      document.getElementById('lightbox-video').src = videoUrl;
+      document.getElementById('lightbox').classList.add('active', 'video');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== e.currentTarget && !e.target.classList.contains('lightbox-close')) {
+        return;
+      }
+
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('active', 'video');
+      document.getElementById('lightbox-img').src = '';
+      const videoIframe = document.getElementById('lightbox-video');
+      if (videoIframe) {
+        videoIframe.src = '';
+      }
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+
+</html>
